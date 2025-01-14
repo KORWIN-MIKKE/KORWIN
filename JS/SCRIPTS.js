@@ -22,7 +22,7 @@ function resetEffect() {
 // Funkcja aktywująca efekt
 function activateEffect() {
     body.classList.add('hover-active');
-    imageContainer.style.filter = 'none'; // Usunięcie filtrów
+    imageContainer.style.filter = 'brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%)'; // Usunięcie filtrów
 }
 // Reakcja na dotyk na urządzeniach mobilnych
 imageContainer.addEventListener('touchstart', function () {
