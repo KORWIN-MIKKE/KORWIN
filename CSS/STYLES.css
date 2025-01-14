@@ -38,7 +38,7 @@ body.hover-active {
 /* Efekty zmiany wyglądu przy najechaniu */
 body.hover-active #KORWIN-LOGO-SVG-WEBP,
 #KORWIN-LOGO-SVG-WEBP:hover {
-    filter: none; /* Usunięcie filtrów */
+    filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
 }
 /* Responsywność */
 @media (max-width: 768px) {
