@@ -1,0 +1,49 @@
+/* Resetowanie marginesów i ustawienie układu */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Normalne tło */
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+/* Zmiana tła przy najechaniu */
+body.hover-active {
+    background-color: #062d63; /* Tło po najechaniu */
+}
+/* Kontener obrazu */
+#KORWIN-STRONA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Wysokość pełnego ekranu */
+    width: 100vw; /* Szerokość pełnego ekranu */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* Stylizacja obrazka */
+#KORWIN-LOGO-SVG-WEBP {
+    max-width: 90%;
+    max-height: 90%;
+    height: auto;
+    width: auto;
+    filter: brightness(0); /* Logo początkowo czarne */
+    transition: filter 0.3s ease;
+}
+/* Efekty zmiany wyglądu przy najechaniu */
+body.hover-active #KORWIN-LOGO-SVG-WEBP,
+#KORWIN-LOGO-SVG-WEBP:hover {
+    filter: none; /* Usunięcie filtrów */
+}
+/* Responsywność */
+@media (max-width: 768px) {
+    #KORWIN-LOGO-SVG-WEBP {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
