@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11Janusz Korwin-Mikke</title>
+    <title>++anusz Korwin-Mikke</title>
     <style>
         body {
             margin: 0;
@@ -229,19 +229,51 @@
     }
 
     // Obsługa zdarzeń dla komputerów
-    document.body.addEventListener('mouseenter', () => {
+    let isMouseDown = false;
+    let startX = 0;
+    let currentX = 0;
+
+    const onTouchStart = (event) => {
+        event.preventDefault();
+        startX = event.touches[0].clientX;
+        isMouseDown = true;
+    };
+
+    const onTouchMove = (event) => {
+        if (!isMouseDown) return;
+        currentX = event.touches[0].clientX;
+        const scrollDistance = startX - currentX;
+        handleScrollMove(scrollDistance);
+    };
+
+    const onTouchEnd = () => {
+        isMouseDown = false;
+    };
+
+    const onMouseEnter = () => {
         if (!isMobileDevice()) {
             document.body.classList.add('hover-active');
             korwinBottomContainer.style.opacity = '1';
         }
-    });
+    };
 
-    document.body.addEventListener('mouseleave', (event) => {
+    const onMouseLeave = (event) => {
         if (!isMobileDevice() && event.relatedTarget === null) {
             document.body.classList.remove('hover-active');
             korwinBottomContainer.style.opacity = '0';
         }
-    });
+    };
+
+    const handleScrollMove = (scrollDistance) => {
+        logoContainer.style.opacity = '0';
+        logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollDistance}px))`;
+        korwinBottomContainer.style.transform = `translateY(-${scrollDistance}px)`;
+
+        if (!isBackgroundChanged) {
+            document.body.classList.add('hover-active');
+            isBackgroundChanged = true;
+        }
+    };
 
     // Dodanie wsparcia dla kliknięcia na urządzeniach mobilnych
     document.body.addEventListener('click', () => {
@@ -279,12 +311,18 @@
     // Obsługa przewijania strony
     window.addEventListener('scroll', handleScroll);
 
+    // Obsługa dotyku
+    document.addEventListener('touchstart', onTouchStart, { passive: false });
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd);
+
+    // Obsługa myszki
+    document.body.addEventListener('mouseenter', onMouseEnter);
+    document.body.addEventListener('mouseleave', onMouseLeave);
+
     // Ustaw obrazy przy ładowaniu strony
     setImages();
 </script>
-
-
-
 
 </body>
 </html>
