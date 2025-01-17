@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2Janusz Korwin-Mikke</title>
+    <title>F#</title>
     <style>
         body {
             margin: 0;
@@ -169,6 +169,13 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* Dodatkowy styl dla widoczności elementów na mobilnych urządzeniach */
+        body.clicked-active #KORWIN-POZNAN,
+        body.clicked-active #KORWIN-SWARZEDZ {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -200,7 +207,6 @@
         const korwinBottomContainer = document.getElementById('KORWIN-SWARZEDZ');
         const logoImage = document.getElementById('KORWIN-LOGO');
         const jkmImage = document.getElementById('JKM-IMAGE');
-
         let isBackgroundChanged = false;
 
         // Funkcja do wykrywania urządzenia mobilnego
@@ -231,6 +237,11 @@
         document.body.addEventListener('mouseout', () => {
             document.body.classList.remove('hover-active');
             korwinBottomContainer.style.opacity = '0';
+        });
+
+        // Dodanie wsparcia dla kliknięcia na urządzeniach mobilnych
+        document.body.addEventListener('click', () => {
+            document.body.classList.toggle('clicked-active');
         });
 
         function handleScroll() {
