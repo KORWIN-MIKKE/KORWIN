@@ -10,34 +10,23 @@
             padding: 0;
             height: 100vh;
             background-color: #ffffff;
-            overflow: hidden; /* Zapewnia, że strona nie będzie dłuższa niż ekran */
-            font-family: Arial, sans-serif;
             transition: background-color 0.5s ease;
+            font-family: Arial, sans-serif;
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
         }
 
-        /* Zmiany stylów, aby białą część miała wysokość ekranu */
-        .white-section {
-            height: 100vh; /* Biała część zajmuje całą wysokość ekranu */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
+        #KORWIN-POZNAN {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.1s ease, transform 0.1s ease;
         }
 
-        /* Część niebieska, która początkowo jest ukryta */
-        .blue-section {
-            height: 100vh;
-            background-color: #062d63;
-            display: none; /* Ukrywamy niebieską część na początku */
-            transition: display 1s ease;
-        }
-
-        .blue-section.visible {
-            display: block; /* Pokazujemy niebieską część po kliknięciu */
-        }
-
-        /* Dodatkowe style dla logo */
         #KORWIN-POZNAN img {
             width: 200px;
             height: auto;
@@ -48,62 +37,247 @@
             filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
         }
 
-        /* Styl na urządzenia mobilne */
+        #KORWIN-SWARZEDZ {
+            text-align: center;
+            margin-top: 0;
+            position: absolute;
+            top: calc(100% - 30px);
+            width: 100%;
+            color: #fdc902;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+        }
+
+        .KORWIN-SWARZEDZ-LINIA {
+            width: 100%;
+            max-width: 90%;
+            height: 8px;
+            background-color: #fdc902;
+            margin: 15px auto;
+        }
+
+        .KORWIN-SWARZEDZ-TEKST {
+            font-size: 25px;
+            font-family: Arial, sans-serif;
+            margin-top: -10px;
+        }
+
+        body.hover-active {
+            background-color: #062d63;
+        }
+
+        body.hover-active #KORWIN-POZNAN img,
+        #KORWIN-POZNAN img:hover {
+            filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
+        }
+
+        .KORWIN-POZNAN-DATA-CONTAINER {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .KORWIN-POZNAN-DATA-ROW {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: none;
+        }
+
+        .KORWIN-POZNAN-DATA-CELL {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            padding: 5px 10px;
+            box-sizing: border-box;
+        }
+
+        .KORWIN-POZNAN-DATA-CELL:first-child {
+            width: 30%;
+            max-width: 300px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .KORWIN-POZNAN-DATA-CELL:nth-child(2) {
+            width: 70%;
+            text-align: justify;
+        }
+
+        .KORWIN-POZNAN-DATA-CELL img {
+            width: 100%;
+            height: auto;
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding: 0 10px;
+            }
+
             #KORWIN-POZNAN img {
                 width: 150px;
             }
 
-            .blue-section {
-                display: none; /* Ukrywamy niebieską część na początku */
+            #KORWIN-SWARZEDZ {
+                width: 90%;
+                margin-top: 0;
             }
 
-            .blue-section.visible {
-                display: block; /* Pokazujemy niebieską część po kliknięciu */
+            .KORWIN-SWARZEDZ-TEKST {
+                font-size: 20px;
             }
+
+            .KORWIN-POZNAN-DATA-CELL {
+                font-size: 14px;
+            }
+
+            .KORWIN-POZNAN-DATA-CELL:first-child {
+                width: 100%;
+                margin-bottom: 10px;
+                float: none;
+            }
+
+            .KORWIN-POZNAN-DATA-CELL:nth-child(2),
+            .KORWIN-POZNAN-DATA-CELL:last-child {
+                width: 100%;
+                text-align: left;
+            }
+
+            .KORWIN-SWARZEDZ-LINIA {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #KORWIN-POZNAN img {
+                width: 120px;
+            }
+
+            .KORWIN-SWARZEDZ-TEKST {
+                font-size: 18px;
+            }
+
+            .KORWIN-POZNAN-DATA-CELL {
+                font-size: 12px;
+            }
+
+            .KORWIN-POZNAN-DATA-CELL img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Dodatkowy styl dla widoczności elementów na mobilnych urządzeniach */
+        body.clicked-active #KORWIN-POZNAN,
+        body.clicked-active #KORWIN-SWARZEDZ {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
 <body>
 
-    <!-- Biała sekcja -->
-    <div class="white-section">
-        <div id="KORWIN-POZNAN">
-            <img id="KORWIN-LOGO" src="GRAFIKA/KORWIN-SVG.svg" alt="Janusz Korwin-Mikke Logo">
-        </div>
-        <button id="show-blue-section">Pokaż więcej</button>
+    <div id="KORWIN-POZNAN">
+        <img id="KORWIN-LOGO" src="GRAFIKA/KORWIN-SVG.svg" alt="Janusz Korwin-Mikke Logo">
     </div>
 
-    <!-- Niebieska sekcja -->
-    <div class="blue-section" id="blue-section">
-        <div class="KORWIN-SWARZEDZ">
-            <div class="KORWIN-SWARZEDZ-TEKST">O Panu Janusz Korwin-Mikke</div>
-            <div class="KORWIN-POZNAN-DATA-CONTAINER">
-                <div class="KORWIN-POZNAN-DATA-ROW">
-                    <div class="KORWIN-POZNAN-DATA-CELL">
-                        <img id="JKM-IMAGE" src="GRAFIKA/JKM-SVG.svg" alt="Janusz Korwin-Mikke Zdjęcie">
-                    </div>
-                    <div class="KORWIN-POZNAN-DATA-CELL">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    </div>
+    <div id="KORWIN-SWARZEDZ">
+        <div class="KORWIN-SWARZEDZ-LINIA"></div>
+        <div class="KORWIN-SWARZEDZ-TEKST">O Panu Janusz Korwin-Mikke</div>
+
+        <div class="KORWIN-POZNAN-DATA-CONTAINER">
+            <div class="KORWIN-POZNAN-DATA-ROW">
+                <div class="KORWIN-POZNAN-DATA-CELL">
+                    <img id="JKM-IMAGE" src="GRAFIKA/JKM-SVG.svg" alt="Janusz Korwin-Mikke Zdjęcie">
+                </div>
+                
+                <div class="KORWIN-POZNAN-DATA-CELL">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
                 </div>
             </div>
         </div>
     </div>
 
 <script>
+    const logoContainer = document.getElementById('KORWIN-POZNAN');
+    const korwinBottomContainer = document.getElementById('KORWIN-SWARZEDZ');
+    const logoImage = document.getElementById('KORWIN-LOGO');
+    const jkmImage = document.getElementById('JKM-IMAGE');
+    let isBackgroundChanged = false;
+
     // Funkcja do wykrywania urządzenia mobilnego
     function isMobileDevice() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         return /android|ipad|iphone|ipod|blackberry|bb10|windows phone|mobile/i.test(userAgent);
     }
 
-    // Dodajemy akcję kliknięcia przycisku
-    document.getElementById('show-blue-section').addEventListener('click', () => {
-        document.getElementById('blue-section').classList.add('visible'); // Pokazujemy niebieską sekcję
-        document.body.style.backgroundColor = '#062d63'; // Zmieniamy tło na niebieskie
+    // Funkcja ustawiająca obrazy w zależności od urządzenia
+    function setImages() {
+        const isMobile = isMobileDevice();
+
+        // Dla urządzeń mobilnych
+        if (isMobile) {
+            logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
+            jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
+        } else {
+            logoImage.src = "GRAFIKA/KORWIN-SVG.svg";
+            jkmImage.src = "GRAFIKA/JKM-SVG.svg";
+        }
+    }
+
+    // Obsługa zdarzeń myszki dla komputerów
+    document.body.addEventListener('mouseover', () => {
+        if (!isMobileDevice()) {
+            document.body.classList.add('hover-active');
+            korwinBottomContainer.style.opacity = '1';
+        }
     });
+
+    document.body.addEventListener('mouseout', (event) => {
+        if (!isMobileDevice() && event.relatedTarget === null) {
+            // Usuń kolor tła tylko, gdy myszka opuści całą stronę
+            document.body.classList.remove('hover-active');
+            korwinBottomContainer.style.opacity = '0';
+        }
+    });
+
+    // Dodanie wsparcia dla kliknięcia na urządzeniach mobilnych
+    document.body.addEventListener('click', () => {
+        if (isMobileDevice()) {
+            document.body.classList.toggle('hover-active');
+        }
+    });
+
+    // Funkcja obsługująca przewijanie strony
+    function handleScroll() {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 100) {
+            logoContainer.style.opacity = '0';
+            logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
+            korwinBottomContainer.style.transform = `translateY(-${scrollY}px)`;
+
+            if (!isBackgroundChanged) {
+                document.body.classList.add('hover-active');
+                isBackgroundChanged = true;
+            }
+        } else {
+            logoContainer.style.opacity = '1';
+            logoContainer.style.transform = 'translate(-50%, -50%)';
+            korwinBottomContainer.style.transform = 'translateY(0)';
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    setImages();
+    handleScroll();
 </script>
+
 
 </body>
 </html>
