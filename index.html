@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1Janusz Korwin-Mikke</title>
+    <title>11Janusz Korwin-Mikke</title>
     <style>
         body {
             margin: 0;
@@ -219,7 +219,6 @@
     function setImages() {
         const isMobile = isMobileDevice();
 
-        // Dla urządzeń mobilnych
         if (isMobile) {
             logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
             jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
@@ -229,17 +228,16 @@
         }
     }
 
-    // Obsługa zdarzeń myszki dla komputerów
-    document.body.addEventListener('mouseover', () => {
+    // Obsługa zdarzeń dla komputerów
+    document.body.addEventListener('mouseenter', () => {
         if (!isMobileDevice()) {
             document.body.classList.add('hover-active');
             korwinBottomContainer.style.opacity = '1';
         }
     });
 
-    document.body.addEventListener('mouseout', (event) => {
+    document.body.addEventListener('mouseleave', (event) => {
         if (!isMobileDevice() && event.relatedTarget === null) {
-            // Usuń kolor tła tylko, gdy myszka opuści całą stronę
             document.body.classList.remove('hover-active');
             korwinBottomContainer.style.opacity = '0';
         }
@@ -256,6 +254,7 @@
     function handleScroll() {
         const scrollY = window.scrollY;
 
+        // Logo przesuwa się w górę i znika
         if (scrollY > 100) {
             logoContainer.style.opacity = '0';
             logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
@@ -269,14 +268,22 @@
             logoContainer.style.opacity = '1';
             logoContainer.style.transform = 'translate(-50%, -50%)';
             korwinBottomContainer.style.transform = 'translateY(0)';
+
+            if (isBackgroundChanged) {
+                document.body.classList.remove('hover-active');
+                isBackgroundChanged = false;
+            }
         }
     }
 
+    // Obsługa przewijania strony
     window.addEventListener('scroll', handleScroll);
 
+    // Ustaw obrazy przy ładowaniu strony
     setImages();
-    handleScroll();
 </script>
+
+
 
 
 </body>
