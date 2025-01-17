@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11Janusz Korwin-Mikke</title>
+    <title>Janusz Korwin-Mikke</title>
     <style>
         body {
             margin: 0;
@@ -208,7 +208,6 @@
     const logoImage = document.getElementById('KORWIN-LOGO');
     const jkmImage = document.getElementById('JKM-IMAGE');
     let isBackgroundChanged = false;
-    let touchStartY = 0; // Used to detect touch move
 
     // Funkcja do wykrywania urządzenia mobilnego
     function isMobileDevice() {
@@ -220,6 +219,7 @@
     function setImages() {
         const isMobile = isMobileDevice();
 
+        // Dla urządzeń mobilnych
         if (isMobile) {
             logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
             jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
@@ -229,17 +229,17 @@
         }
     }
 
-    // Funkcja obsługująca najechanie myszką
-    document.body.addEventListener('mouseenter', () => {
+    // Obsługa zdarzeń myszki dla komputerów
+    document.body.addEventListener('mouseover', () => {
         if (!isMobileDevice()) {
             document.body.classList.add('hover-active');
             korwinBottomContainer.style.opacity = '1';
         }
     });
 
-    // Funkcja obsługująca zjazd myszki
-    document.body.addEventListener('mouseleave', (event) => {
+    document.body.addEventListener('mouseout', (event) => {
         if (!isMobileDevice() && event.relatedTarget === null) {
+            // Usuń kolor tła tylko, gdy myszka opuści całą stronę
             document.body.classList.remove('hover-active');
             korwinBottomContainer.style.opacity = '0';
         }
@@ -249,24 +249,6 @@
     document.body.addEventListener('click', () => {
         if (isMobileDevice()) {
             document.body.classList.toggle('hover-active');
-            korwinBottomContainer.style.opacity = document.body.classList.contains('hover-active') ? '1' : '0';
-        }
-    });
-
-    // Obsługa dotyku na urządzeniach mobilnych
-    document.body.addEventListener('touchstart', (event) => {
-        if (event.touches.length > 0) {
-            touchStartY = event.touches[0].clientY;
-        }
-    });
-
-    document.body.addEventListener('touchmove', (event) => {
-        const touchEndY = event.touches[0].clientY;
-        if (Math.abs(touchStartY - touchEndY) > 20) {
-            // Detect swipe and toggle background
-            document.body.classList.toggle('hover-active');
-            korwinBottomContainer.style.opacity = document.body.classList.contains('hover-active') ? '1' : '0';
-            touchStartY = touchEndY;
         }
     });
 
@@ -274,7 +256,6 @@
     function handleScroll() {
         const scrollY = window.scrollY;
 
-        // Logo przesuwa się w górę i znika
         if (scrollY > 100) {
             logoContainer.style.opacity = '0';
             logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
@@ -291,12 +272,12 @@
         }
     }
 
-    // Obsługa przewijania strony
     window.addEventListener('scroll', handleScroll);
 
-    // Ustaw obrazy przy ładowaniu strony
     setImages();
+    handleScroll();
 </script>
+
 
 </body>
 </html>
