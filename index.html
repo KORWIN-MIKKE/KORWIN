@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-Janusz Korwin-Mikke</title>
+    <title>11Janusz Korwin-Mikke</title>
     <style>
         body {
             margin: 0;
@@ -14,8 +13,7 @@
             transition: background-color 0.5s ease;
             font-family: Arial, sans-serif;
             position: relative;
-            max-width: 100%;
-            margin: 0 auto;
+            overflow-x: hidden;
         }
 
         #KORWIN-POZNAN {
@@ -170,6 +168,13 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* Dodatkowy styl dla widoczności elementów na mobilnych urządzeniach */
+        body.clicked-active #KORWIN-POZNAN,
+        body.clicked-active #KORWIN-SWARZEDZ {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -196,71 +201,76 @@
         </div>
     </div>
 
-    <script>
-        const logoContainer = document.getElementById('KORWIN-POZNAN');
-        const korwinBottomContainer = document.getElementById('KORWIN-SWARZEDZ');
-        const logoImage = document.getElementById('KORWIN-LOGO');
-        const jkmImage = document.getElementById('JKM-IMAGE');
+<script>
+    const logoContainer = document.getElementById('KORWIN-POZNAN');
+    const korwinBottomContainer = document.getElementById('KORWIN-SWARZEDZ');
+    const logoImage = document.getElementById('KORWIN-LOGO');
+    const jkmImage = document.getElementById('JKM-IMAGE');
+    let touchStartY = 0; // Used to detect touch move
+    let isBackgroundChanged = false;
 
-        let isBackgroundChanged = false;
+    // Funkcja do wykrywania urządzenia mobilnego
+    function isMobileDevice() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        return /android|ipad|iphone|ipod|blackberry|bb10|windows phone|mobile/i.test(userAgent);
+    }
 
-        // Funkcja do wykrywania urządzenia mobilnego
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            return /android|ipad|iphone|ipod|blackberry|bb10|windows phone|mobile/i.test(userAgent);
+    // Funkcja ustawiająca obrazy w zależności od urządzenia
+    function setImages() {
+        const isMobile = isMobileDevice();
+
+        if (isMobile) {
+            logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
+            jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
+        } else {
+            logoImage.src = "GRAFIKA/KORWIN-SVG.svg";
+            jkmImage.src = "GRAFIKA/JKM-SVG.svg";
         }
+    }
 
-        // Funkcja ustawiająca obrazy w zależności od urządzenia
-        function setImages() {
-            const isMobile = isMobileDevice();
+    // Funkcja obsługująca przewijanie strony
+    function handleScroll() {
+        const scrollY = window.scrollY;
 
-            // Dla urządzeń mobilnych
-            if (isMobile) {
-                logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
-                jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
-            } else {
-                logoImage.src = "GRAFIKA/KORWIN-SVG.svg";
-                jkmImage.src = "GRAFIKA/JKM-SVG.svg";
+        // Logo przesuwa się w górę i znika
+        if (scrollY > 100) {
+            logoContainer.style.opacity = '0';
+            logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
+            korwinBottomContainer.style.transform = `translateY(-${scrollY}px)`;
+
+            if (!isBackgroundChanged) {
+                document.body.classList.add('hover-active');
+                isBackgroundChanged = true;
             }
+        } else {
+            logoContainer.style.opacity = '1';
+            logoContainer.style.transform = 'translate(-50%, -50%)';
+            korwinBottomContainer.style.transform = 'translateY(0)';
         }
+    }
 
-        document.body.addEventListener('mouseover', () => {
+    // Obsługa dotyku na urządzeniach mobilnych
+    document.body.addEventListener('touchstart', (event) => {
+        if (event.touches.length > 0) {
+            touchStartY = event.touches[0].clientY;
+        }
+    });
+
+    document.body.addEventListener('touchmove', (event) => {
+        const touchEndY = event.touches[0].clientY;
+        if (touchStartY - touchEndY > 20) { // Przesunięcie w dół
             document.body.classList.add('hover-active');
-            korwinBottomContainer.style.opacity = '1';
-        });
-
-        document.body.addEventListener('mouseout', () => {
-            document.body.classList.remove('hover-active');
-            korwinBottomContainer.style.opacity = '0';
-        });
-
-        function handleScroll() {
-            const scrollY = window.scrollY;
-
-            if (scrollY > 100) {
-                logoContainer.style.opacity = '0';
-                logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
-                korwinBottomContainer.style.transform = `translateY(-${scrollY}px)`;
-
-                if (!isBackgroundChanged) {
-                    document.body.classList.add('hover-active');
-                    isBackgroundChanged = true;
-                }
-            } else {
-                logoContainer.style.opacity = '1';
-                logoContainer.style.transform = 'translate(-50%, -50%)';
-                korwinBottomContainer.style.transform = 'translateY(0)';
-
-                if (isBackgroundChanged) {
-                    document.body.classList.add('hover-active');
-                }
-            }
+            korwinBottomContainer.style.opacity = '1'; // Pokaż resztę strony
+            isBackgroundChanged = true;
         }
+    });
 
-        window.addEventListener('scroll', handleScroll);
+    // Obsługa przewijania strony
+    window.addEventListener('scroll', handleScroll);
 
-        setImages();
-        handleScroll();
-    </script>
+    // Ustaw obrazy przy ładowaniu strony
+    setImages();
+</script>
+
 </body>
 </html>
