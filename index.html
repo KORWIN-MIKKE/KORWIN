@@ -28,7 +28,7 @@
         }
 
         #KORWIN-POZNAN img {
-            width: 200px;
+            width: 200px; /* Przywrócona szerokość 200px */
             height: auto;
             transition: filter 0.5s ease;
         }
@@ -37,7 +37,7 @@
             filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
         }
 
-        #KORWIN-SWARZEDZ {
+        #KORWIN-KOZIEGLOWY {
             text-align: center;
             margin-top: 0;
             position: absolute;
@@ -48,7 +48,7 @@
             opacity: 0;
         }
 
-        .KORWIN-SWARZEDZ-LINIA {
+        .KORWIN-KOZIEGLOWY-LINIA {
             width: 100%;
             max-width: 90%;
             height: 8px;
@@ -56,7 +56,7 @@
             margin: 15px auto;
         }
 
-        .KORWIN-SWARZEDZ-TEKST {
+        .KORWIN-KOZIEGLOWY-TEKST {
             font-size: 25px;
             font-family: Arial, sans-serif;
             margin-top: -10px;
@@ -79,7 +79,7 @@
 
         .KORWIN-POZNAN-DATA-ROW {
             display: flex;
-            justify-content: space-between;
+            align-items: flex-start;
             padding: 10px;
             border-bottom: none;
         }
@@ -87,28 +87,15 @@
         .KORWIN-POZNAN-DATA-CELL {
             font-size: 16px;
             font-family: Arial, sans-serif;
-            padding: 5px 10px;
+            padding: 0 10px;
             box-sizing: border-box;
         }
 
-        .KORWIN-POZNAN-DATA-CELL:first-child {
-            width: 30%;
-            max-width: 300px;
-            float: left;
-            margin-right: 20px;
-        }
-
-        .KORWIN-POZNAN-DATA-CELL:nth-child(2) {
-            width: 70%;
-            text-align: justify;
-        }
-
         .KORWIN-POZNAN-DATA-CELL img {
-            width: 100%;
+            width: 400px; /* Przywrócona szerokość 200px */
             height: auto;
-            float: left;
-            margin-right: 15px;
-            margin-bottom: 15px;
+            margin-right: none;
+            margin-bottom: none;
         }
 
         @media (max-width: 768px) {
@@ -120,12 +107,12 @@
                 width: 150px;
             }
 
-            #KORWIN-SWARZEDZ {
+            #KORWIN-KOZIEGLOWY {
                 width: 90%;
                 margin-top: 0;
             }
 
-            .KORWIN-SWARZEDZ-TEKST {
+            .KORWIN-KOZIEGLOWY-TEKST {
                 font-size: 20px;
             }
 
@@ -145,7 +132,7 @@
                 text-align: left;
             }
 
-            .KORWIN-SWARZEDZ-LINIA {
+            .KORWIN-KOZIEGLOWY-LINIA {
                 width: 100%;
                 margin: 10px 0;
             }
@@ -156,7 +143,7 @@
                 width: 120px;
             }
 
-            .KORWIN-SWARZEDZ-TEKST {
+            .KORWIN-KOZIEGLOWY-TEKST {
                 font-size: 18px;
             }
 
@@ -172,7 +159,7 @@
 
         /* Dodatkowy styl dla widoczności elementów na mobilnych urządzeniach */
         body.clicked-active #KORWIN-POZNAN,
-        body.clicked-active #KORWIN-SWARZEDZ {
+        body.clicked-active #KORWIN-KOZIEGLOWY {
             opacity: 1;
             visibility: visible;
         }
@@ -184,37 +171,32 @@
         <img id="KORWIN-LOGO" src="GRAFIKA/KORWIN-SVG.svg" alt="Janusz Korwin-Mikke Logo">
     </div>
 
-    <div id="KORWIN-SWARZEDZ">
-        <div class="KORWIN-SWARZEDZ-LINIA"></div>
-        <div class="KORWIN-SWARZEDZ-TEKST">O Panu Janusz Korwin-Mikke</div>
+    <div id="KORWIN-KOZIEGLOWY">
+        <div class="KORWIN-KOZIEGLOWY-LINIA"></div>
+        <div class="KORWIN-KOZIEGLOWY-TEKST">O Panu Janusz Korwin-Mikke</div>
 
         <div class="KORWIN-POZNAN-DATA-CONTAINER">
             <div class="KORWIN-POZNAN-DATA-ROW">
                 <div class="KORWIN-POZNAN-DATA-CELL">
                     <img id="JKM-IMAGE" src="GRAFIKA/JKM-SVG.svg" alt="Janusz Korwin-Mikke Zdjęcie">
                 </div>
-                
+
                 <div class="KORWIN-POZNAN-DATA-CELL">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
                 </div>
             </div>
         </div>
@@ -222,7 +204,7 @@
 
 <script>
     const logoContainer = document.getElementById('KORWIN-POZNAN');
-    const korwinBottomContainer = document.getElementById('KORWIN-SWARZEDZ');
+    const korwinBottomContainer = document.getElementById('KORWIN-KOZIEGLOWY');
     const logoImage = document.getElementById('KORWIN-LOGO');
     const jkmImage = document.getElementById('JKM-IMAGE');
     let isBackgroundChanged = false;
@@ -256,12 +238,15 @@
     });
 
     document.body.addEventListener('mouseout', (event) => {
-        if (!isMobileDevice() && event.relatedTarget === null) {
-            // Usuń kolor tła tylko, gdy myszka opuści całą stronę
-            document.body.classList.remove('hover-active');
-            korwinBottomContainer.style.opacity = '0';
-        }
-    });
+    if (!isMobileDevice() && event.relatedTarget === null) {
+        // Usuń kolor tła tylko, gdy myszka opuści całą stronę
+        document.body.classList.remove('hover-active');
+        korwinBottomContainer.style.opacity = '0';
+
+        // Przewiń stronę na górę
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
 
     // Dodanie wsparcia dla kliknięcia na urządzeniach mobilnych
     document.body.addEventListener('click', () => {
@@ -294,8 +279,9 @@
 
     setImages();
     handleScroll();
-</script>
 
+
+</script>
 
 </body>
 </html>
