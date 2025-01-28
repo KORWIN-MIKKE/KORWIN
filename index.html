@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-Janusz Korwin-Mikke</title>
+    <title>Janusz Korwin-Mikke</title>
     <style>
         body {
-            margin: 0;
             padding: 0;
             height: 100vh;
             background-color: #ffffff;
@@ -28,7 +27,7 @@
         }
 
         #KORWIN-POZNAN img {
-            width: 200px; /* Przywrócona szerokość 200px */
+            width: 200px;
             height: auto;
             transition: filter 0.5s ease;
         }
@@ -46,6 +45,7 @@
             color: #fdc902;
             transition: opacity 0.5s ease, transform 0.5s ease;
             opacity: 0;
+            visibility: hidden;
         }
 
         .KORWIN-KOZIEGLOWY-LINIA {
@@ -58,17 +58,7 @@
 
         .KORWIN-KOZIEGLOWY-TEKST {
             font-size: 25px;
-            font-family: Arial, sans-serif;
             margin-top: -10px;
-        }
-
-        body.hover-active {
-            background-color: #062d63;
-        }
-
-        body.hover-active #KORWIN-POZNAN img,
-        #KORWIN-POZNAN img:hover {
-            filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
         }
 
         .KORWIN-POZNAN-DATA-CONTAINER {
@@ -79,62 +69,32 @@
 
         .KORWIN-POZNAN-DATA-ROW {
             display: flex;
-            align-items: flex-start;
-            padding: 10px;
-            border-bottom: none;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
         .KORWIN-POZNAN-DATA-CELL {
             font-size: 16px;
-            font-family: Arial, sans-serif;
-            padding: 0 10px;
-            box-sizing: border-box;
+            padding: 0;
         }
 
         .KORWIN-POZNAN-DATA-CELL img {
-            width: 400px; /* Przywrócona szerokość 200px */
+            width: 200px;
             height: auto;
-            margin-right: none;
-            margin-bottom: none;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 0 10px;
-            }
-
             #KORWIN-POZNAN img {
                 width: 150px;
-            }
-
-            #KORWIN-KOZIEGLOWY {
-                width: 90%;
-                margin-top: 0;
             }
 
             .KORWIN-KOZIEGLOWY-TEKST {
                 font-size: 20px;
             }
 
-            .KORWIN-POZNAN-DATA-CELL {
-                font-size: 14px;
-            }
-
-            .KORWIN-POZNAN-DATA-CELL:first-child {
-                width: 100%;
-                margin-bottom: 10px;
-                float: none;
-            }
-
-            .KORWIN-POZNAN-DATA-CELL:nth-child(2),
-            .KORWIN-POZNAN-DATA-CELL:last-child {
-                width: 100%;
-                text-align: left;
-            }
-
-            .KORWIN-KOZIEGLOWY-LINIA {
-                width: 100%;
-                margin: 10px 0;
+            .KORWIN-POZNAN-DATA-CELL img {
+                width: 120px;
             }
         }
 
@@ -147,19 +107,21 @@
                 font-size: 18px;
             }
 
-            .KORWIN-POZNAN-DATA-CELL {
-                font-size: 12px;
-            }
-
             .KORWIN-POZNAN-DATA-CELL img {
-                margin-right: 0;
-                margin-bottom: 10px;
+                width: 100px;
             }
         }
 
-        /* Dodatkowy styl dla widoczności elementów na mobilnych urządzeniach */
-        body.clicked-active #KORWIN-POZNAN,
-        body.clicked-active #KORWIN-KOZIEGLOWY {
+        body.hover-active {
+            background-color: #062d63;
+        }
+
+        body.hover-active #KORWIN-POZNAN img,
+        #KORWIN-POZNAN img:hover {
+            filter: brightness(0) saturate(100%) invert(74%) sepia(90%) saturate(893%) hue-rotate(351deg) brightness(99%) contrast(111%);
+        }
+
+        body.hover-active #KORWIN-KOZIEGLOWY {
             opacity: 1;
             visibility: visible;
         }
@@ -180,23 +142,8 @@
                 <div class="KORWIN-POZNAN-DATA-CELL">
                     <img id="JKM-IMAGE" src="GRAFIKA/JKM-SVG.svg" alt="Janusz Korwin-Mikke Zdjęcie">
                 </div>
-
                 <div class="KORWIN-POZNAN-DATA-CELL">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id. Integer et augue ut nulla efficitur posuere.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet egestas purus. Suspendisse potenti. Etiam euismod vehicula erat, vel cursus velit interdum id.
                 </div>
             </div>
         </div>
@@ -207,80 +154,80 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet e
     const korwinBottomContainer = document.getElementById('KORWIN-KOZIEGLOWY');
     const logoImage = document.getElementById('KORWIN-LOGO');
     const jkmImage = document.getElementById('JKM-IMAGE');
-    let isBackgroundChanged = false;
 
-    // Funkcja do wykrywania urządzenia mobilnego
-    function isMobileDevice() {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        return /android|ipad|iphone|ipod|blackberry|bb10|windows phone|mobile/i.test(userAgent);
+    function isTouchDevice() {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
     }
 
-    // Funkcja ustawiająca obrazy w zależności od urządzenia
     function setImages() {
-        const isMobile = isMobileDevice();
-
-        // Dla urządzeń mobilnych
-        if (isMobile) {
-            logoImage.src = "GRAFIKA/KORWIN-WEBP.webp";
-            jkmImage.src = "GRAFIKA/JKM-WEBP.webp";
-        } else {
-            logoImage.src = "GRAFIKA/KORWIN-SVG.svg";
-            jkmImage.src = "GRAFIKA/JKM-SVG.svg";
+        const isTouch = isTouchDevice();
+        try {
+            const logoSrc = isTouch ? "GRAFIKA/KORWIN-WEBP.webp" : "GRAFIKA/KORWIN-SVG.svg";
+            const jkmSrc = isTouch ? "GRAFIKA/JKM-WEBP.webp" : "GRAFIKA/JKM-SVG.svg";
+            
+            logoImage.src = logoSrc;
+            jkmImage.src = jkmSrc;
+        } catch (error) {
+            console.error('Błąd podczas ładowania obrazów:', error);
         }
     }
 
-    // Obsługa zdarzeń myszki dla komputerów
     document.body.addEventListener('mouseover', () => {
-        if (!isMobileDevice()) {
+        if (!isTouchDevice()) {
             document.body.classList.add('hover-active');
             korwinBottomContainer.style.opacity = '1';
+            korwinBottomContainer.style.visibility = 'visible';
         }
     });
 
     document.body.addEventListener('mouseout', (event) => {
-    if (!isMobileDevice() && event.relatedTarget === null) {
-        // Usuń kolor tła tylko, gdy myszka opuści całą stronę
-        document.body.classList.remove('hover-active');
-        korwinBottomContainer.style.opacity = '0';
-
-        // Przewiń stronę na górę
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
-
-    // Dodanie wsparcia dla kliknięcia na urządzeniach mobilnych
-    document.body.addEventListener('click', () => {
-        if (isMobileDevice()) {
-            document.body.classList.toggle('hover-active');
+        if (!isTouchDevice() && !document.body.contains(event.relatedTarget)) {
+            document.body.classList.remove('hover-active');
+            korwinBottomContainer.style.opacity = '0';
+            korwinBottomContainer.style.visibility = 'hidden';
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
     });
 
-    // Funkcja obsługująca przewijanie strony
-    function handleScroll() {
-        const scrollY = window.scrollY;
+    document.body.addEventListener('click', () => {
+        if (isTouchDevice()) {
+            document.body.classList.toggle('hover-active');
+            const isVisible = korwinBottomContainer.style.visibility === 'visible';
+            korwinBottomContainer.style.opacity = isVisible ? '0' : '1';
+            korwinBottomContainer.style.visibility = isVisible ? 'hidden' : 'visible';
+        }
+    });
 
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
         if (scrollY > 100) {
             logoContainer.style.opacity = '0';
-            logoContainer.style.transform = `translate(-50%, calc(-50% - ${scrollY}px))`;
             korwinBottomContainer.style.transform = `translateY(-${scrollY}px)`;
-
-            if (!isBackgroundChanged) {
-                document.body.classList.add('hover-active');
-                isBackgroundChanged = true;
-            }
         } else {
-            logoContainer.style.opacity = '1';
-            logoContainer.style.transform = 'translate(-50%, -50%)';
-            korwinBottomContainer.style.transform = 'translateY(0)';
+            if (!document.body.classList.contains('hover-active')) {
+                logoContainer.style.opacity = '1';
+            }
         }
-    }
+    });
 
-    window.addEventListener('scroll', handleScroll);
+    korwinBottomContainer.addEventListener('mouseenter', () => {
+        if (document.body.classList.contains('hover-active')) {
+            logoContainer.style.opacity = '0';
+        }
+    });
 
-    setImages();
-    handleScroll();
+    korwinBottomContainer.addEventListener('mouseleave', () => {
+        if (document.body.classList.contains('hover-active')) {
+            logoContainer.style.opacity = '1';
+        }
+    });
 
-
+    window.addEventListener('load', setImages);
 </script>
 
 </body>
